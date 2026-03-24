@@ -25,7 +25,7 @@
 
       {% if section.settings.order_deadline != blank %}
         <p class="school-hero__deadline">
-          <span class="school-hero__deadline-icon">📅</span>
+          <span class="school-hero__deadline-icon"></span>
           Order deadline: <strong>{{ section.settings.order_deadline }}</strong>
         </p>
       {% endif %}
@@ -45,16 +45,17 @@
 
 <style>
   .school-hero {
-    padding: 40px 0 32px;
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
-    margin-bottom: 32px;
+    padding: 48px 0 40px;
+    border-bottom: 1px solid #1E3A5F;
+    margin-bottom: 0;
+    background-color: #0D1B2A;
   }
 
   .school-hero__inner {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
   }
 
   .school-hero__logo img {
@@ -65,37 +66,55 @@
 
   .school-hero__title {
     margin: 0;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
   }
 
   .school-hero__deadline {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(var(--color-foreground), 0.06);
-    border: 1px solid rgba(var(--color-foreground), 0.12);
-    border-radius: 6px;
-    padding: 6px 14px;
+    gap: 8px;
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 0;
+    padding: 8px 16px;
     font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    color: #C9A84C;
     margin: 0;
+  }
+
+  .school-hero__deadline strong {
+    color: #FFFFFF;
   }
 
   .school-hero__message {
     font-size: 1rem;
-    color: rgba(var(--color-foreground), 0.75);
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
     max-width: 600px;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   .school-hero__contact {
     font-size: 0.85rem;
-    color: rgba(var(--color-foreground), 0.6);
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .school-hero__contact a {
-    color: rgb(var(--color-foreground));
+    color: #C9A84C;
     text-decoration: underline;
+    text-decoration-color: rgba(201, 168, 76, 0.4);
+    text-underline-offset: 3px;
+  }
+
+  .school-hero__contact a:hover {
+    text-decoration-color: #C9A84C;
   }
 
   @media (min-width: 750px) {
@@ -103,7 +122,7 @@
       flex-direction: row;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 24px;
     }
 
     .school-hero__text {

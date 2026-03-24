@@ -1,0 +1,577 @@
+/* ==========================================================================
+   VGI Prints — Dark Premium Theme Overhaul
+   Navy/Gold design system layered on top of Shopify Dawn
+   ========================================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* --------------------------------------------------------------------------
+   Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --vgi-navy: #0D1B2A;
+  --vgi-navy-light: #1A2A3A;
+  --vgi-navy-border: #1E3A5F;
+  --vgi-navy-dark: #091520;
+  --vgi-gold: #C9A84C;
+  --vgi-gold-hover: #D4B85E;
+  --vgi-gold-dim: rgba(201, 168, 76, 0.15);
+  --vgi-white: #FFFFFF;
+  --vgi-white-soft: rgba(255, 255, 255, 0.85);
+  --vgi-white-muted: rgba(255, 255, 255, 0.55);
+
+  /* Override Dawn color tokens */
+  --color-background: 13, 27, 42;
+  --color-foreground: 255, 255, 255;
+  --color-button: 201, 168, 76;
+  --color-button-text: 13, 27, 42;
+  --color-secondary-button: 26, 42, 58;
+  --color-secondary-button-text: 255, 255, 255;
+  --color-link: 201, 168, 76;
+  --color-badge-foreground: 255, 255, 255;
+  --color-badge-background: 26, 42, 58;
+  --color-badge-border: 30, 58, 95;
+  --gradient-background: #0D1B2A;
+
+  /* Override Dawn font tokens */
+  --font-heading-family: 'Playfair Display', serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 700;
+  --font-body-family: 'Inter', sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+
+  /* Zero out Dawn's rounded corners */
+  --buttons-radius: 0px;
+  --buttons-border-width: 0px;
+  --inputs-radius: 0px;
+  --variant-pills-radius: 0px;
+  --product-card-corner-radius: 0rem;
+  --product-card-image-padding: 0rem;
+  --media-radius: 0px;
+  --media-border-opacity: 0;
+  --media-shadow-opacity: 0;
+  --popup-corner-radius: 0px;
+}
+
+/* --------------------------------------------------------------------------
+   Base / Body
+   -------------------------------------------------------------------------- */
+body,
+.color-scheme-1,
+.color-background-1 {
+  background-color: var(--vgi-navy) !important;
+  color: var(--vgi-white-soft);
+  font-family: 'Inter', sans-serif;
+}
+
+/* All Dawn color scheme containers — force dark */
+[class*="color-"] {
+  --color-background: 13, 27, 42;
+  --color-foreground: 255, 255, 255;
+  --color-button: 201, 168, 76;
+  --color-button-text: 13, 27, 42;
+  --gradient-background: #0D1B2A;
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-white);
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.header-wrapper,
+.section-header {
+  background-color: var(--vgi-navy) !important;
+  border-bottom: 1px solid var(--vgi-navy-border) !important;
+}
+
+.header,
+.header__heading-link,
+.header__heading a {
+  color: var(--vgi-white) !important;
+}
+
+/* Nav links */
+.header__menu-item,
+.header__menu-item span,
+.list-menu__item--link,
+.mega-menu__link {
+  color: var(--vgi-white-soft) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.header__menu-item:hover,
+.list-menu__item--link:hover,
+.mega-menu__link:hover {
+  color: var(--vgi-gold) !important;
+}
+
+/* Cart icon */
+.header__icon .icon,
+.header__icon svg {
+  color: var(--vgi-gold) !important;
+  stroke: var(--vgi-gold) !important;
+}
+
+.header__icon:hover .icon,
+.header__icon:hover svg {
+  color: var(--vgi-gold-hover) !important;
+  stroke: var(--vgi-gold-hover) !important;
+}
+
+/* Cart count badge */
+.cart-count-bubble {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+}
+
+/* Announcement bar */
+.announcement-bar {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+}
+
+.announcement-bar a,
+.announcement-bar__link {
+  color: var(--vgi-navy) !important;
+}
+
+/* Menu drawer (mobile) */
+.menu-drawer,
+.menu-drawer__menu-item,
+.menu-drawer__navigation {
+  background-color: var(--vgi-navy-light) !important;
+  color: var(--vgi-white) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.button,
+.shopify-challenge__button,
+button.button,
+a.button {
+  border-radius: 0 !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+}
+
+/* Primary / solid buttons */
+.button--primary,
+.button--primary:not([disabled]),
+.shopify-payment-button .shopify-payment-button__button--unbranded {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+  border: none !important;
+}
+
+.button--primary:hover,
+.shopify-payment-button .shopify-payment-button__button--unbranded:hover {
+  background-color: var(--vgi-gold-hover) !important;
+  color: var(--vgi-navy) !important;
+}
+
+/* Secondary / outline buttons */
+.button--secondary {
+  background-color: transparent !important;
+  color: var(--vgi-white) !important;
+  border: 1px solid var(--vgi-navy-border) !important;
+  border-radius: 0 !important;
+}
+
+.button--secondary:hover {
+  background-color: var(--vgi-navy-light) !important;
+  border-color: var(--vgi-gold) !important;
+  color: var(--vgi-gold) !important;
+}
+
+/* Tertiary / text buttons */
+.button--tertiary {
+  color: var(--vgi-gold) !important;
+}
+
+.button--tertiary:hover {
+  color: var(--vgi-gold-hover) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Product Cards
+   -------------------------------------------------------------------------- */
+.card-wrapper,
+.card,
+.card--standard,
+.card--card {
+  background-color: var(--vgi-navy-light) !important;
+  border: 1px solid var(--vgi-navy-border) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.card__content,
+.card__information {
+  background-color: var(--vgi-navy-light) !important;
+  padding: 1rem !important;
+}
+
+.card__heading,
+.card__heading a,
+.card-information__text,
+.card__text {
+  color: var(--vgi-white) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.card__heading a:hover {
+  color: var(--vgi-gold) !important;
+}
+
+/* Price */
+.price-item,
+.price-item--regular,
+.price-item--sale,
+.price .money {
+  color: var(--vgi-gold) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* Card media */
+.card__media,
+.card .media {
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.card__inner {
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Quick add button on cards */
+.quick-add__submit {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+.quick-add__submit:hover {
+  background-color: var(--vgi-gold-hover) !important;
+}
+
+/* Card badge (sale, sold out, etc.) */
+.card__badge .badge {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   Collection Page
+   -------------------------------------------------------------------------- */
+.collection-hero,
+.collection-hero__inner {
+  background-color: var(--vgi-navy) !important;
+}
+
+.collection-hero__title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-white) !important;
+}
+
+.collection-hero__description {
+  color: var(--vgi-white-soft) !important;
+}
+
+/* Facets / Filters */
+.facets-wrapper,
+.facets__form {
+  border-color: var(--vgi-navy-border) !important;
+}
+
+.facets__label,
+.facets__summary,
+.facets__heading,
+.facet-filters__label {
+  color: var(--vgi-white-soft) !important;
+}
+
+.active-facets__button {
+  background-color: var(--vgi-navy-light) !important;
+  color: var(--vgi-white) !important;
+  border-color: var(--vgi-navy-border) !important;
+  border-radius: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Product Page
+   -------------------------------------------------------------------------- */
+.product__title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-white) !important;
+}
+
+.product__description,
+.product__text {
+  color: var(--vgi-white-soft) !important;
+}
+
+/* Variant picker */
+.product-form__input label {
+  color: var(--vgi-white-soft) !important;
+}
+
+fieldset.product-form__input .swatch-input__button,
+.variant-input .swatch-input__button {
+  border-radius: 0 !important;
+}
+
+/* Quantity selector */
+.quantity {
+  border-color: var(--vgi-navy-border) !important;
+  border-radius: 0 !important;
+  color: var(--vgi-white) !important;
+}
+
+.quantity__input {
+  color: var(--vgi-white) !important;
+  background-color: transparent !important;
+}
+
+.quantity__button {
+  color: var(--vgi-white-soft) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Cart Drawer / Cart Page
+   -------------------------------------------------------------------------- */
+.drawer,
+.cart-drawer {
+  background-color: var(--vgi-navy-light) !important;
+  color: var(--vgi-white) !important;
+}
+
+.cart-drawer__overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.cart-item__name,
+.cart-item__details a {
+  color: var(--vgi-white) !important;
+}
+
+.cart-item__price .money {
+  color: var(--vgi-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.footer,
+.section-footer,
+footer {
+  background-color: var(--vgi-navy-dark) !important;
+  border-top: 1px solid var(--vgi-navy-border) !important;
+}
+
+.footer-block__heading,
+.footer__content-top h2 {
+  color: var(--vgi-white) !important;
+  font-family: 'Playfair Display', serif !important;
+}
+
+.footer-block a,
+.footer a,
+.copyright__content a {
+  color: var(--vgi-white-muted) !important;
+}
+
+.footer-block a:hover,
+.footer a:hover {
+  color: var(--vgi-gold) !important;
+}
+
+.footer-block__details-content,
+.footer p,
+.copyright__content {
+  color: var(--vgi-white-muted) !important;
+}
+
+/* Newsletter input in footer */
+.footer .field__input {
+  background-color: var(--vgi-navy-light) !important;
+  border: 1px solid var(--vgi-navy-border) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+}
+
+.footer .field__button {
+  color: var(--vgi-gold) !important;
+}
+
+/* Payment icons */
+.footer .list-payment .icon {
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   Forms / Inputs
+   -------------------------------------------------------------------------- */
+.field__input,
+.select__select,
+.customer input,
+textarea {
+  background-color: var(--vgi-navy-light) !important;
+  border: 1px solid var(--vgi-navy-border) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+}
+
+.field__label {
+  color: var(--vgi-white-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Sections — Image Banner / Hero
+   -------------------------------------------------------------------------- */
+.banner {
+  border-radius: 0 !important;
+}
+
+.banner__content {
+  background-color: rgba(13, 27, 42, 0.75);
+}
+
+/* --------------------------------------------------------------------------
+   Rich Text Section
+   -------------------------------------------------------------------------- */
+.rich-text-wrapper {
+  background-color: var(--vgi-navy) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Slideshow
+   -------------------------------------------------------------------------- */
+.slideshow {
+  border-radius: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Misc Dawn Overrides — kill generic borders and outlines
+   -------------------------------------------------------------------------- */
+.section-template--*,
+.content-container,
+.isolate {
+  background-color: var(--vgi-navy) !important;
+}
+
+/* Remove Dawn's default shadow/border styling on media */
+.global-media-settings {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Breadcrumbs */
+.breadcrumbs a,
+.breadcrumbs span {
+  color: var(--vgi-white-muted) !important;
+}
+
+.breadcrumbs a:hover {
+  color: var(--vgi-gold) !important;
+}
+
+/* Links */
+a:not(.button) {
+  color: var(--vgi-gold);
+}
+
+a:not(.button):hover {
+  color: var(--vgi-gold-hover);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--vgi-gold);
+  color: var(--vgi-navy);
+}
+
+/* Scrollbar (Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vgi-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vgi-navy-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vgi-gold);
+}
+
+/* Search */
+.predictive-search,
+.predictive-search__results-groups-wrapper {
+  background-color: var(--vgi-navy-light) !important;
+  border-color: var(--vgi-navy-border) !important;
+  color: var(--vgi-white) !important;
+}
+
+.predictive-search__heading {
+  color: var(--vgi-white-muted) !important;
+}
+
+.predictive-search-result__title a {
+  color: var(--vgi-white) !important;
+}
+
+/* Modal / Popup */
+.modal__content,
+.popup-modal__content {
+  background-color: var(--vgi-navy-light) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Pagination
+   -------------------------------------------------------------------------- */
+.pagination__list .pagination__item a {
+  color: var(--vgi-white) !important;
+  border-color: var(--vgi-navy-border) !important;
+  border-radius: 0 !important;
+}
+
+.pagination__list .pagination__item--current {
+  background-color: var(--vgi-gold) !important;
+  color: var(--vgi-navy) !important;
+  border-radius: 0 !important;
+}
