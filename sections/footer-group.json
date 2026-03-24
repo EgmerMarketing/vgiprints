@@ -8,22 +8,22 @@
         "footer-0": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
+            "heading": "Quick Links",
             "menu": "footer"
           }
         },
         "footer-1": {
           "type": "link_list",
           "settings": {
-            "heading": "Info",
+            "heading": "Information",
             "menu": "footer"
           }
         },
         "footer-2": {
           "type": "text",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "VGI Prints",
+            "subtext": "<p>Custom apparel, embroidery, DTF prints, patches, signs and promo products. We bring your brand to life.</p>"
           }
         }
       },
@@ -33,9 +33,9 @@
         "footer-2"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "Stay in the loop",
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
