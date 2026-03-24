@@ -1,0 +1,177 @@
+{% comment %}
+  VGI Prints — School/Org Storefront Hero Section
+  Displays above the collection product grid on locked collection pages.
+  Shows org name, a welcome message, and a badge indicating the store is locked/unlocked.
+{% endcomment %}
+
+<div class="school-hero color-{{ section.settings.color_scheme }} gradient">
+  <div class="school-hero__inner page-width">
+    {% if section.settings.org_logo != blank %}
+      <div class="school-hero__logo">
+        <img
+          src="{{ section.settings.org_logo | image_url: width: 200 }}"
+          alt="{{ section.settings.org_name }}"
+          width="200"
+          height="auto"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+
+    <div class="school-hero__text">
+      {% if section.settings.org_name != blank %}
+        <h1 class="school-hero__title h1">{{ section.settings.org_name }}</h1>
+      {% endif %}
+
+      {% if section.settings.order_deadline != blank %}
+        <p class="school-hero__deadline">
+          <span class="school-hero__deadline-icon">📅</span>
+          Order deadline: <strong>{{ section.settings.order_deadline }}</strong>
+        </p>
+      {% endif %}
+
+      {% if section.settings.welcome_message != blank %}
+        <p class="school-hero__message">{{ section.settings.welcome_message }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_contact != blank %}
+      <div class="school-hero__contact">
+        <p>Questions? Contact <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .school-hero {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+    margin-bottom: 32px;
+  }
+
+  .school-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .school-hero__logo img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .school-hero__title {
+    margin: 0;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+  }
+
+  .school-hero__deadline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(var(--color-foreground), 0.06);
+    border: 1px solid rgba(var(--color-foreground), 0.12);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.88rem;
+    margin: 0;
+  }
+
+  .school-hero__message {
+    font-size: 1rem;
+    color: rgba(var(--color-foreground), 0.75);
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .school-hero__contact {
+    font-size: 0.85rem;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  .school-hero__contact a {
+    color: rgb(var(--color-foreground));
+    text-decoration: underline;
+  }
+
+  @media (min-width: 750px) {
+    .school-hero__inner {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .school-hero__text {
+      flex: 1;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "School Storefront Hero",
+  "tag": "section",
+  "class": "section-school-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "org_name",
+      "label": "Organization Name",
+      "default": "Lincoln Elementary"
+    },
+    {
+      "type": "image_picker",
+      "id": "org_logo",
+      "label": "Organization Logo (optional)"
+    },
+    {
+      "type": "text",
+      "id": "order_deadline",
+      "label": "Order Deadline",
+      "placeholder": "April 30, 2026",
+      "info": "Leave blank to hide"
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_message",
+      "label": "Welcome Message",
+      "default": "Welcome to the official spirit wear store. All orders ship directly to the school."
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "hello@vgiprints.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show contact info",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" },
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" }
+      ],
+      "default": "background-2",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "School Storefront Hero"
+    }
+  ]
+}
+{% endschema %}
