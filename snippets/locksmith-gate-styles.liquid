@@ -1,0 +1,101 @@
+{% comment %}
+  Locksmith Gate Styles
+  Overrides Locksmith's default passcode gate UI to match the VGI Prints navy/gold design system.
+{% endcomment %}
+
+<style>
+  /* Locksmith gate – VGI Prints navy/gold overrides */
+  .locksmith-access-form {
+    background-color: #0D1B2A;
+    color: #FFFFFF;
+    padding: 3rem 2rem;
+    max-width: 480px;
+    margin: 4rem auto;
+    text-align: center;
+  }
+
+  .locksmith-access-form h1,
+  .locksmith-access-form h2,
+  .locksmith-access-form h3,
+  .locksmith-access-form .locksmith-access-form__heading {
+    font-family: 'Playfair Display', serif;
+    color: #C9A84C;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .locksmith-access-form label {
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .locksmith-access-form input[type="text"],
+  .locksmith-access-form input[type="password"],
+  .locksmith-access-form input[type="email"],
+  .locksmith-access-form textarea,
+  .locksmith-access-form select {
+    background-color: #1B2A3E;
+    color: #FFFFFF;
+    border: 1px solid #2A3F5A;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .locksmith-access-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .locksmith-access-form input:focus,
+  .locksmith-access-form textarea:focus,
+  .locksmith-access-form select:focus {
+    outline: none;
+    border-color: #C9A84C;
+    box-shadow: 0 0 0 1px #C9A84C;
+  }
+
+  .locksmith-access-form button,
+  .locksmith-access-form input[type="submit"],
+  .locksmith-access-form .locksmith-access-form__submit {
+    background-color: #C9A84C;
+    color: #0D1B2A;
+    border: none;
+    border-radius: 0;
+    padding: 0.875rem 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+  }
+
+  .locksmith-access-form button:hover,
+  .locksmith-access-form input[type="submit"]:hover,
+  .locksmith-access-form .locksmith-access-form__submit:hover {
+    background-color: #B8953F;
+  }
+
+  .locksmith-access-form p,
+  .locksmith-access-form .locksmith-access-form__message {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .locksmith-access-form a {
+    color: #C9A84C;
+    text-decoration: underline;
+  }
+
+  .locksmith-access-form a:hover {
+    color: #B8953F;
+  }
+</style>
