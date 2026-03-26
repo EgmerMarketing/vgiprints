@@ -5,45 +5,45 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
-          }
-        },
-        "footer-1": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Info",
-            "menu": "footer"
-          }
-        },
-        "footer-2": {
+        "footer-brand": {
           "type": "text",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "VGI Prints",
+            "subtext": "<p>Custom apparel printing, embroidery, DTF transfers, vinyl patches, banners, and promo products. Bold, durable, and uniquely yours.</p>"
+          }
+        },
+        "footer-links": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer"
+          }
+        },
+        "footer-info": {
+          "type": "text",
+          "settings": {
+            "heading": "Contact",
+            "subtext": "<p>Phone: (909) 957-2995<br>Email: hello@vgiprints.com</p>"
           }
         }
       },
       "block_order": [
-        "footer-0",
-        "footer-1",
-        "footer-2"
+        "footer-brand",
+        "footer-links",
+        "footer-info"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "Stay in the loop",
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": false,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "margin_top": 0,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     }
   },

@@ -6,26 +6,26 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Custom Apparel, Patches, Signs & More",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Built for brands that want to stand out. High-quality printing, embroidery, and custom merchandise for schools, teams, and businesses.",
             "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "Get a Quote",
+            "button_link_2": "shopify:\/\/pages\/contact",
+            "button_style_secondary_2": true
           }
         }
       },
@@ -46,20 +46,20 @@
         "show_text_below": false
       }
     },
-    "rich_text": {
+    "services_intro": {
       "type": "rich-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
+            "heading": "What We Do",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>At VGI Prints, we bring your brand to life through high-quality, custom-printed materials. Whether you need standout apparel for your team, vibrant stickers for your packaging, or eye-catching signs for your next event — we've got you covered.</p>"
           }
         }
       },
@@ -70,141 +70,212 @@
       "settings": {
         "color_scheme": "scheme-1",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "padding_top": 52,
+        "padding_bottom": 20
+      }
+    },
+    "services_columns": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_printing": {
+          "type": "column",
+          "settings": {
+            "title": "Custom Apparel Printing",
+            "text": "<p>Tees, hoodies, workwear and more. Screen printing and DTF transfers for crisp, durable results that last.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_embroidery": {
+          "type": "column",
+          "settings": {
+            "title": "Embroidery",
+            "text": "<p>Professional embroidered logos and designs on polos, caps, jackets, and uniforms. Built to last through daily wear.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_patches": {
+          "type": "column",
+          "settings": {
+            "title": "Vinyl Patches & Labels",
+            "text": "<p>Durable, weather-resistant, and bold. Custom patches and vinyl labels for apparel, gear, and packaging.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_signs": {
+          "type": "column",
+          "settings": {
+            "title": "Banners & Signage",
+            "text": "<p>Big, bold, and built to last. Event banners, yard signs, and promotional displays for any occasion.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col_printing",
+        "col_embroidery",
+        "col_patches",
+        "col_signs"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "padding_top": 28,
+        "padding_bottom": 52
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured Products",
         "heading_size": "h2",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "swipe_on_mobile": true,
         "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     },
-    "collage": {
-      "type": "collage",
+    "brand_story": {
+      "type": "image-with-text",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "collection": ""
+            "heading": "Bold, Durable & Uniquely Yours",
+            "heading_size": "h1"
           }
         },
-        "product": {
-          "type": "product",
+        "text": {
+          "type": "text",
           "settings": {
-            "product": "",
-            "second_image": false
+            "text": "<p>We work with small businesses, creators, schools, and organizations to deliver print solutions that stand out. With fast turnaround times and a personal touch, we make it easy to look professional — and stay consistent.</p>",
+            "text_style": "body"
           }
         },
-        "collection-1": {
-          "type": "collection",
+        "button": {
+          "type": "button",
           "settings": {
-            "collection": ""
+            "button_label": "Our Story",
+            "button_link": "shopify:\/\/pages\/about"
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "heading",
+        "text",
+        "button"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "who_we_serve": {
+      "type": "rich-text",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "heading": "Who We Serve",
+            "heading_size": "h1"
           }
         },
-        "column2": {
-          "type": "column",
+        "text": {
+          "type": "text",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "text": "<p>Schools &bull; Sports Teams &bull; Small Businesses &bull; Churches &bull; Event Organizers &bull; Creators</p>"
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "heading",
+        "text"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 44
+      }
+    },
+    "cta_bottom": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready to Bring Your Brand to Life?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Custom printing, embroidery, and merchandise — made easy. Get in touch for a free quote.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact Us",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
     "image_banner",
-    "rich_text",
+    "services_intro",
+    "services_columns",
     "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "brand_story",
+    "who_we_serve",
+    "cta_bottom"
   ]
 }
