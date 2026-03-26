@@ -1,28 +1,37 @@
 /* ==========================================================================
-   VGI Prints — Brand Theme
+   VGI Prints — Premium Brand Theme
+   Custom apparel printing & embroidery
    Burnt Orange + Forest Green design system on Shopify Dawn
    ========================================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
 
-/* --------------------------------------------------------------------------
-   Design Tokens
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
 :root {
+  /* Brand palette */
   --vgi-orange: #D35400;
   --vgi-orange-hover: #B84600;
-  --vgi-orange-dim: rgba(211, 84, 0, 0.12);
+  --vgi-orange-dim: rgba(211, 84, 0, 0.10);
+  --vgi-orange-glow: rgba(211, 84, 0, 0.25);
   --vgi-green: #2D5A2D;
   --vgi-green-light: #3A6E3A;
   --vgi-charcoal: #1A1A1A;
+  --vgi-charcoal-soft: #242424;
   --vgi-white: #FFFFFF;
   --vgi-white-soft: rgba(255, 255, 255, 0.85);
   --vgi-warm-gray: #F5F3EF;
   --vgi-text-dark: #333333;
   --vgi-text-body: #555555;
+  --vgi-border: #E5E2DC;
+  --vgi-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --vgi-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --vgi-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --vgi-shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.14);
 
-  /* Override Dawn color tokens — default to white/light */
+  /* Override Dawn color tokens */
   --color-background: 255, 255, 255;
   --color-foreground: 51, 51, 51;
   --color-button: 211, 84, 0;
@@ -40,45 +49,215 @@
   --font-body-style: normal;
   --font-body-weight: 400;
 
-  /* Shape — keep Dawn's clean rounded defaults, not zero */
-  --buttons-radius: 4px;
-  --inputs-radius: 4px;
+  /* Shape — sharp and intentional */
+  --buttons-radius: 0px;
+  --inputs-radius: 2px;
+
+  /* Spacing */
+  --vgi-section-pad-desktop: 96px;
+  --vgi-section-pad-mobile: 52px;
+
+  /* Transitions */
+  --vgi-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --vgi-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --vgi-duration: 0.35s;
 }
 
-/* --------------------------------------------------------------------------
-   Base
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   2. BASE & TYPOGRAPHY SYSTEM
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Lato', sans-serif;
+  font-weight: 400;
   color: var(--vgi-text-body);
   background-color: var(--vgi-white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h0, .h1, .h2, .h3, .h4, .h5 {
+/* Display headings — fluid clamp sizing */
+h1, .h1, .h0 {
   font-family: 'Playfair Display', serif !important;
+  font-weight: 800;
   color: var(--vgi-text-dark);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700;
+  color: var(--vgi-text-dark);
+  font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+h3, .h3 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700;
+  color: var(--vgi-text-dark);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h4, .h4, h5, .h5, h6 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600;
+  color: var(--vgi-text-dark);
+  line-height: 1.3;
+}
+
+/* Uppercase label style — used for kickers, badges, small headings */
+.subtitle,
+.caption-with-letter-spacing {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vgi-orange);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--vgi-text-body);
 }
 
 a:not(.button) {
   color: var(--vgi-orange);
+  transition: color 0.2s ease;
 }
 
 a:not(.button):hover {
   color: var(--vgi-orange-hover);
 }
 
+/* Selection */
 ::selection {
   background-color: var(--vgi-orange);
   color: var(--vgi-white);
 }
 
-/* --------------------------------------------------------------------------
-   Header
-   -------------------------------------------------------------------------- */
+::-moz-selection {
+  background-color: var(--vgi-orange);
+  color: var(--vgi-white);
+}
+
+/* Focus styles for a11y */
+*:focus-visible {
+  outline: 2px solid var(--vgi-orange) !important;
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   3. SCROLL ANIMATIONS
+   ========================================================================== */
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Elements waiting to animate — hidden by default */
+.vgi-animate {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--vgi-ease-out), transform 0.7s var(--vgi-ease-out);
+}
+
+.vgi-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.vgi-animate.is-visible:nth-child(2) { transition-delay: 0.1s; }
+.vgi-animate.is-visible:nth-child(3) { transition-delay: 0.2s; }
+.vgi-animate.is-visible:nth-child(4) { transition-delay: 0.3s; }
+.vgi-animate.is-visible:nth-child(5) { transition-delay: 0.4s; }
+
+/* ==========================================================================
+   4. ANNOUNCEMENT BAR
+   ========================================================================== */
+.announcement-bar {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: announcementPulse 2s ease-in-out;
+}
+
+@keyframes announcementPulse {
+  0% { opacity: 0; transform: translateY(-100%); }
+  40% { opacity: 1; transform: translateY(0); }
+  55% { background-color: var(--vgi-orange-hover); }
+  70% { background-color: var(--vgi-orange); }
+  85% { background-color: var(--vgi-orange-hover); }
+  100% { background-color: var(--vgi-orange); }
+}
+
+.announcement-bar a,
+.announcement-bar__link,
+.announcement-bar__message {
+  color: var(--vgi-white) !important;
+}
+
+/* ==========================================================================
+   5. HEADER — Sticky Glassmorphism
+   ========================================================================== */
 .header-wrapper,
 .section-header {
   background-color: var(--vgi-charcoal) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Glassmorphism on scroll — add .is-scrolled via JS */
+.header-wrapper.shopify-section-header-sticky {
+  background-color: rgba(26, 26, 26, 0.92) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.header {
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .header,
@@ -87,20 +266,50 @@ a:not(.button):hover {
   color: var(--vgi-white) !important;
 }
 
+/* Logo area */
+.header__heading {
+  margin-right: 24px;
+}
+
+.header__heading-link {
+  display: flex;
+  align-items: center;
+}
+
+/* Nav links — animated underline */
 .header__menu-item,
 .header__menu-item span,
 .list-menu__item--link {
-  color: rgba(255,255,255,0.85) !important;
+  color: var(--vgi-white-soft) !important;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+  position: relative;
+  text-decoration: none !important;
+  transition: color var(--vgi-duration) ease;
+}
+
+/* Underline pseudo-element */
+.header__menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--vgi-orange);
+  transition: width var(--vgi-duration) var(--vgi-ease);
+}
+
+.header__menu-item:hover::after {
+  width: 100%;
 }
 
 .header__menu-item:hover span,
 .list-menu__item--link:hover {
-  color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
 }
 
 /* Cart icon */
@@ -108,57 +317,91 @@ a:not(.button):hover {
 .header__icon svg {
   color: var(--vgi-white) !important;
   stroke: var(--vgi-white) !important;
+  transition: color 0.2s ease;
+}
+
+.header__icon:hover .icon,
+.header__icon:hover svg {
+  color: var(--vgi-orange) !important;
+  stroke: var(--vgi-orange) !important;
 }
 
 .cart-count-bubble {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
+  font-weight: 700;
 }
 
-/* Announcement bar */
-.announcement-bar {
-  background-color: var(--vgi-orange) !important;
-  color: var(--vgi-white) !important;
-}
-
-.announcement-bar a,
-.announcement-bar__link {
-  color: var(--vgi-white) !important;
-}
-
-/* Mobile menu drawer */
+/* ==========================================================================
+   6. MOBILE DRAWER MENU — Dark Full-Screen Overlay
+   ========================================================================== */
 .menu-drawer {
+  background-color: var(--vgi-charcoal) !important;
+  border: none !important;
+}
+
+.menu-drawer__inner-container {
   background-color: var(--vgi-charcoal) !important;
 }
 
 .menu-drawer__menu-item,
-.menu-drawer__navigation a {
+.menu-drawer__navigation a,
+.menu-drawer__menu-item span {
+  color: var(--vgi-white) !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.menu-drawer__menu-item:hover,
+.menu-drawer__navigation a:hover {
+  color: var(--vgi-orange) !important;
+  padding-left: 8px;
+}
+
+.menu-drawer__close-button {
   color: var(--vgi-white) !important;
 }
 
-/* --------------------------------------------------------------------------
-   Buttons
-   -------------------------------------------------------------------------- */
+/* Hamburger icon */
+.header__icon--menu .icon {
+  color: var(--vgi-white) !important;
+}
+
+/* ==========================================================================
+   7. BUTTONS — Sharp, Bold, Intentional
+   ========================================================================== */
 .button,
 button.button,
 a.button {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.82rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0 !important;
+  padding: 16px 32px;
+  transition: all var(--vgi-duration) var(--vgi-ease);
+  position: relative;
+  overflow: hidden;
 }
 
 .button--primary,
 .button--primary:not([disabled]) {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
-  border: none !important;
+  border: 2px solid var(--vgi-orange) !important;
 }
 
 .button--primary:hover {
   background-color: var(--vgi-orange-hover) !important;
+  border-color: var(--vgi-orange-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--vgi-orange-glow);
 }
 
 .button--secondary {
@@ -170,30 +413,66 @@ a.button {
 .button--secondary:hover {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--vgi-orange-glow);
 }
 
-.quick-add__submit {
-  background-color: var(--vgi-orange) !important;
-  color: var(--vgi-white) !important;
-  border: none !important;
-}
-
-.quick-add__submit:hover {
-  background-color: var(--vgi-orange-hover) !important;
-}
-
-/* Shopify Pay button */
+/* Shopify Pay / dynamic checkout buttons */
 .shopify-payment-button .shopify-payment-button__button--unbranded {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
 }
 
-/* --------------------------------------------------------------------------
-   Product Cards
-   -------------------------------------------------------------------------- */
+.shopify-payment-button .shopify-payment-button__button--unbranded:hover {
+  background-color: var(--vgi-orange-hover) !important;
+}
+
+/* ==========================================================================
+   8. PRODUCT CARDS — Premium Hover Effects
+   ========================================================================== */
+.card-wrapper,
 .card--standard,
 .card--card {
-  border-radius: 4px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: var(--vgi-shadow-sm);
+  transition: transform var(--vgi-duration) var(--vgi-ease),
+              box-shadow var(--vgi-duration) var(--vgi-ease);
+  overflow: hidden;
+  background: var(--vgi-white);
+}
+
+.card-wrapper:hover,
+.card--standard:hover,
+.card--card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vgi-shadow-lift);
+}
+
+/* Image zoom on hover */
+.card__media img,
+.card__media .media img {
+  transition: transform 0.5s var(--vgi-ease-out);
+  will-change: transform;
+}
+
+.card-wrapper:hover .card__media img,
+.card-wrapper:hover .card__media .media img {
+  transform: scale(1.06);
+}
+
+.card__media {
+  overflow: hidden;
+}
+
+/* Card text area */
+.card__content {
+  padding: 16px 12px;
 }
 
 .card__heading,
@@ -201,140 +480,115 @@ a.button {
   font-family: 'Lato', sans-serif !important;
   color: var(--vgi-text-dark) !important;
   font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  transition: color 0.2s ease;
 }
 
 .card__heading a:hover {
   color: var(--vgi-orange) !important;
 }
 
+/* Price styling */
 .price-item,
-.price-item--regular,
+.price-item--regular {
+  color: var(--vgi-text-dark) !important;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .price-item--sale {
   color: var(--vgi-orange) !important;
   font-weight: 700;
 }
 
+/* Badges */
 .card__badge .badge {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
   border: none !important;
+  border-radius: 0 !important;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  font-size: 0.7rem;
+  padding: 4px 10px;
 }
 
-/* --------------------------------------------------------------------------
-   Footer
-   -------------------------------------------------------------------------- */
-.footer,
-.section-footer,
-footer {
-  background-color: var(--vgi-green) !important;
+/* Quick-add — slides up from bottom on hover */
+.quick-add__submit,
+.card .quick-add {
+  background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
-}
-
-.footer-block__heading,
-.footer__content-top h2 {
-  color: var(--vgi-white) !important;
-  font-family: 'Playfair Display', serif !important;
-}
-
-.footer-block a,
-.footer a,
-.copyright__content a {
-  color: rgba(255, 255, 255, 0.75) !important;
-}
-
-.footer-block a:hover,
-.footer a:hover {
-  color: var(--vgi-orange) !important;
-}
-
-.footer-block__details-content,
-.footer p,
-.copyright__content {
-  color: rgba(255, 255, 255, 0.65) !important;
-}
-
-.footer .field__input {
-  background-color: rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  color: var(--vgi-white) !important;
-  border-radius: 4px !important;
-}
-
-/* --------------------------------------------------------------------------
-   Forms / Inputs
-   -------------------------------------------------------------------------- */
-.field__input,
-.select__select,
-textarea {
-  border-color: #cccccc !important;
-  border-radius: 4px !important;
-  color: var(--vgi-text-dark) !important;
-}
-
-.field__label {
-  color: var(--vgi-text-body) !important;
-}
-
-/* --------------------------------------------------------------------------
-   Cart Drawer
-   -------------------------------------------------------------------------- */
-.drawer {
-  background-color: var(--vgi-white) !important;
-}
-
-.cart-item__name a {
-  color: var(--vgi-text-dark) !important;
-}
-
-.cart-item__price .money {
-  color: var(--vgi-orange) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: 'Lato', sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  transition: all var(--vgi-duration) var(--vgi-ease);
+  opacity: 0;
+  transform: translateY(12px);
 }
 
-/* --------------------------------------------------------------------------
-   Collection / Facets
-   -------------------------------------------------------------------------- */
-.collection-hero__title {
-  font-family: 'Playfair Display', serif !important;
-  color: var(--vgi-white) !important;
+.card-wrapper:hover .quick-add__submit,
+.card-wrapper:hover .card .quick-add {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.facets__label,
-.facets__heading {
-  color: var(--vgi-text-dark) !important;
+.quick-add__submit:hover {
+  background-color: var(--vgi-orange-hover) !important;
 }
 
-.active-facets__button {
-  background-color: var(--vgi-warm-gray) !important;
-  color: var(--vgi-text-dark) !important;
-  border-radius: 4px !important;
+/* ==========================================================================
+   9. SECTIONS — Layout, Spacing & Alternating Backgrounds
+   ========================================================================== */
+.section {
+  padding-top: var(--vgi-section-pad-desktop);
+  padding-bottom: var(--vgi-section-pad-desktop);
 }
 
-/* --------------------------------------------------------------------------
-   Product Page
-   -------------------------------------------------------------------------- */
-.product__title {
-  font-family: 'Playfair Display', serif !important;
-  color: var(--vgi-text-dark) !important;
+@media (max-width: 749px) {
+  .section {
+    padding-top: var(--vgi-section-pad-mobile);
+    padding-bottom: var(--vgi-section-pad-mobile);
+  }
 }
 
-.product__description,
-.product__text {
-  color: var(--vgi-text-body) !important;
+/* Alternating section backgrounds */
+.shopify-section:nth-child(even) {
+  background-color: var(--vgi-warm-gray);
 }
 
-.quantity {
-  border-color: #cccccc !important;
-  border-radius: 4px !important;
+.shopify-section:nth-child(odd) {
+  background-color: var(--vgi-white);
 }
 
-/* --------------------------------------------------------------------------
-   Sections — dark charcoal override (for product carousel and dark sections)
-   -------------------------------------------------------------------------- */
+/* Section headings — centered with decorative accent line */
+.section-header__title,
+.title--primary {
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+.section-header__title::after,
+.title--primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background-color: var(--vgi-orange);
+}
+
+/* Dark sections override */
 .color-scheme-3,
 .color-background-3 {
   background-color: var(--vgi-charcoal) !important;
@@ -350,28 +604,747 @@ textarea {
   color: var(--vgi-white) !important;
 }
 
-/* --------------------------------------------------------------------------
-   Pagination
-   -------------------------------------------------------------------------- */
+.color-scheme-3 .section-header__title::after,
+.color-background-3 .title--primary::after {
+  background-color: var(--vgi-orange);
+}
+
+/* ==========================================================================
+   10. PRODUCT DETAIL PAGE (PDP)
+   ========================================================================== */
+
+/* Product title */
+.product__title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-text-dark) !important;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+/* Price — large and prominent */
+.product__info-wrapper .price,
+.product__info-wrapper .price__container {
+  margin-bottom: 20px;
+}
+
+.product__info-wrapper .price-item--regular {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--vgi-text-dark) !important;
+}
+
+.product__info-wrapper .price-item--sale {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--vgi-orange) !important;
+}
+
+.product__info-wrapper .price-item--compare {
+  font-size: 1.1rem;
+  color: var(--vgi-text-body) !important;
+  text-decoration: line-through;
+}
+
+/* Product description */
+.product__description,
+.product__text {
+  color: var(--vgi-text-body) !important;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+/* Sticky product info column */
+@media (min-width: 990px) {
+  .product__info-wrapper {
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+  }
+}
+
+/* Image gallery — hover zoom */
+.product__media-item img,
+.product__media img {
+  transition: transform 0.5s var(--vgi-ease-out);
+}
+
+.product__media-item:hover img,
+.product__media:hover img {
+  transform: scale(1.04);
+}
+
+.product__media-item {
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Add to cart button — full-width, large, animated */
+.product-form__submit {
+  width: 100% !important;
+  padding: 18px 32px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+  border: 2px solid var(--vgi-orange) !important;
+  border-radius: 0 !important;
+  transition: all var(--vgi-duration) var(--vgi-ease) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-form__submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.product-form__submit:hover {
+  background-color: var(--vgi-orange-hover) !important;
+  border-color: var(--vgi-orange-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--vgi-orange-glow);
+}
+
+.product-form__submit:hover::before {
+  left: 100%;
+}
+
+/* Variant pickers — clean selected state */
+.product-form__input input[type="radio"]:checked + label,
+.variant-input input[type="radio"]:checked + label,
+.swatch-input input[type="radio"]:checked + label {
+  border: 2px solid var(--vgi-orange) !important;
+  background-color: var(--vgi-orange-dim) !important;
+  color: var(--vgi-text-dark) !important;
+}
+
+.product-form__input label,
+.variant-input label {
+  border: 2px solid var(--vgi-border) !important;
+  border-radius: 0 !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.product-form__input label:hover,
+.variant-input label:hover {
+  border-color: var(--vgi-orange) !important;
+}
+
+/* Quantity input */
+.quantity {
+  border-color: var(--vgi-border) !important;
+  border-radius: 0 !important;
+}
+
+/* Trust badges row (used via custom_liquid block) */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 0;
+  margin-top: 20px;
+  border-top: 1px solid var(--vgi-border);
+}
+
+.trust-badges__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vgi-text-body);
+}
+
+.trust-badges__item svg,
+.trust-badges__item img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.7;
+}
+
+/* PDP Accordion tabs — smooth transitions */
+.accordion {
+  border-bottom: 1px solid var(--vgi-border);
+}
+
+.accordion__title {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vgi-text-dark);
+  padding: 18px 0;
+  transition: color 0.2s ease;
+}
+
+.accordion__title:hover {
+  color: var(--vgi-orange);
+}
+
+.accordion summary .icon-caret {
+  transition: transform 0.3s var(--vgi-ease);
+}
+
+details[open] summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  padding-bottom: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ==========================================================================
+   11. COLLECTION PAGE
+   ========================================================================== */
+.collection-hero__title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-white) !important;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.collection-hero__description {
+  color: var(--vgi-white-soft) !important;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Filter sidebar */
+.facets__wrapper {
+  border: none;
+}
+
+.facets__label,
+.facets__heading {
+  color: var(--vgi-text-dark) !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.facets__summary {
+  border-bottom: 1px solid var(--vgi-border);
+}
+
+.active-facets__button {
+  background-color: var(--vgi-warm-gray) !important;
+  color: var(--vgi-text-dark) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--vgi-border) !important;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.active-facets__button:hover {
+  background-color: var(--vgi-orange-dim) !important;
+  border-color: var(--vgi-orange) !important;
+}
+
+/* Collection grid — matches card hover */
+.collection-product-list .grid__item,
+.product-grid .grid__item {
+  transition: transform var(--vgi-duration) var(--vgi-ease);
+}
+
+/* ==========================================================================
+   12. FOOTER — Forest Green
+   ========================================================================== */
+.footer,
+.section-footer,
+footer.footer {
+  background-color: var(--vgi-green) !important;
+  color: var(--vgi-white) !important;
+  position: relative;
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+/* Accent top border — burnt orange line */
+.footer::before,
+.section-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vgi-orange), var(--vgi-orange-hover), var(--vgi-orange));
+}
+
+.footer-block__heading,
+.footer__content-top h2 {
+  color: var(--vgi-white) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+}
+
+.footer-block a,
+.footer a,
+.copyright__content a {
+  color: rgba(255, 255, 255, 0.70) !important;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-block a:hover,
+.footer a:hover {
+  color: var(--vgi-orange) !important;
+}
+
+.footer-block__details-content,
+.footer p,
+.copyright__content {
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Newsletter input — custom styled */
+.footer .newsletter-form__field-wrapper {
+  max-width: 380px;
+}
+
+.footer .field__input {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.footer .field__input:focus {
+  border-color: var(--vgi-orange) !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.footer .field__input::placeholder {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+.footer .field__button,
+.footer .newsletter-form__button {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+  transition: background-color 0.2s ease;
+}
+
+.footer .field__button:hover,
+.footer .newsletter-form__button:hover {
+  background-color: var(--vgi-orange-hover) !important;
+}
+
+/* Footer social icons */
+.footer .list-social__link svg,
+.footer .list-social__link .icon {
+  color: rgba(255, 255, 255, 0.6) !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
+  transition: color 0.2s ease, fill 0.2s ease;
+}
+
+.footer .list-social__link:hover svg,
+.footer .list-social__link:hover .icon {
+  color: var(--vgi-orange) !important;
+  fill: var(--vgi-orange) !important;
+}
+
+/* Footer payment icons */
+.footer .list-payment .icon {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.footer .list-payment .icon:hover {
+  opacity: 0.85;
+}
+
+/* Multi-column layout */
+@media (min-width: 750px) {
+  .footer__content-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+}
+
+/* ==========================================================================
+   13. FORMS & INPUTS
+   ========================================================================== */
+.field__input,
+.select__select,
+textarea {
+  border: 1px solid var(--vgi-border) !important;
+  border-radius: 0 !important;
+  color: var(--vgi-text-dark) !important;
+  font-family: 'Lato', sans-serif;
+  padding: 14px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.field__input:focus,
+.select__select:focus,
+textarea:focus {
+  border-color: var(--vgi-orange) !important;
+  box-shadow: 0 0 0 1px var(--vgi-orange) !important;
+}
+
+.field__label {
+  color: var(--vgi-text-body) !important;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   14. CART DRAWER
+   ========================================================================== */
+.drawer {
+  background-color: var(--vgi-white) !important;
+}
+
+.drawer__header {
+  border-bottom: 1px solid var(--vgi-border);
+}
+
+.cart-item__name a {
+  color: var(--vgi-text-dark) !important;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.cart-item__name a:hover {
+  color: var(--vgi-orange) !important;
+}
+
+.cart-item__price .money {
+  color: var(--vgi-text-dark) !important;
+  font-weight: 700;
+}
+
+.cart-item__discounted-price .money {
+  color: var(--vgi-orange) !important;
+}
+
+.cart-drawer__footer {
+  border-top: 1px solid var(--vgi-border);
+}
+
+.totals__subtotal-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--vgi-text-dark);
+}
+
+/* ==========================================================================
+   15. IMAGE BANNER / HERO SECTIONS
+   ========================================================================== */
+.banner__heading {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.banner__text {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+  max-width: 580px;
+}
+
+.banner__buttons .button {
+  min-width: 200px;
+}
+
+/* ==========================================================================
+   16. PAGINATION
+   ========================================================================== */
 .pagination__item--current a,
 .pagination__item--current span {
   background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
   border-color: var(--vgi-orange) !important;
+  border-radius: 0 !important;
 }
 
-/* --------------------------------------------------------------------------
-   Misc
-   -------------------------------------------------------------------------- */
+.pagination__item a {
+  border-radius: 0 !important;
+  transition: all 0.2s ease;
+}
+
+.pagination__item a:hover {
+  border-color: var(--vgi-orange) !important;
+  color: var(--vgi-orange) !important;
+}
+
+/* ==========================================================================
+   17. IMAGE SHIMMER / LOADING PLACEHOLDER
+   ========================================================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.media--loading-shimmer,
+img[loading="lazy"]:not([src]) {
+  background: linear-gradient(
+    90deg,
+    var(--vgi-warm-gray) 0%,
+    #EDE9E3 40%,
+    var(--vgi-warm-gray) 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* ==========================================================================
+   18. CUSTOM SCROLLBAR
+   ========================================================================== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vgi-warm-gray);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cccccc;
-  border-radius: 4px;
+  background: #C4BFB7;
+  border-radius: 3px;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--vgi-orange);
 }
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C4BFB7 var(--vgi-warm-gray);
+}
+
+/* ==========================================================================
+   19. RICH TEXT / MULTICOLUMN SECTIONS
+   ========================================================================== */
+.rich-text__heading {
+  font-family: 'Playfair Display', serif !important;
+}
+
+.rich-text__text {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.multicolumn-card__info {
+  text-align: center;
+}
+
+.multicolumn-card__title {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* ==========================================================================
+   20. IMAGE WITH TEXT
+   ========================================================================== */
+.image-with-text__heading {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.image-with-text__text {
+  color: var(--vgi-text-body);
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   21. SLIDESHOW / CAROUSEL
+   ========================================================================== */
+.slider-button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--vgi-text-dark) !important;
+  border: none !important;
+  transition: all 0.2s ease;
+}
+
+.slider-button:hover {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+}
+
+/* Dots / indicators */
+.slider-counter__link--dots .dot,
+.slideshow__control {
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+.slider-counter__link--active .dot,
+.slideshow__control--active {
+  background-color: var(--vgi-orange) !important;
+}
+
+/* ==========================================================================
+   22. PREDICTIVE SEARCH
+   ========================================================================== */
+.predictive-search {
+  border: 1px solid var(--vgi-border);
+  box-shadow: var(--vgi-shadow-lg);
+}
+
+.predictive-search__item a {
+  transition: background-color 0.15s ease;
+}
+
+.predictive-search__item a:hover {
+  background-color: var(--vgi-warm-gray);
+}
+
+.predictive-search__heading {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--vgi-text-body);
+}
+
+/* ==========================================================================
+   23. CONTACT / PAGE TEMPLATES
+   ========================================================================== */
+.contact__fields .field__input,
+.form__input {
+  border-radius: 0 !important;
+}
+
+.contact__button,
+.form__submit {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+  border-radius: 0 !important;
+  border: 2px solid var(--vgi-orange) !important;
+}
+
+.contact__button:hover,
+.form__submit:hover {
+  background-color: var(--vgi-orange-hover) !important;
+  border-color: var(--vgi-orange-hover) !important;
+}
+
+/* ==========================================================================
+   24. RESPONSIVE REFINEMENTS
+   ========================================================================== */
+@media (max-width: 749px) {
+  h1, .h1, .h0 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    line-height: 1.12;
+  }
+
+  h2, .h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .banner__heading {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+
+  .product-form__submit {
+    padding: 16px 24px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .trust-badges {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .trust-badges__item {
+    flex: 0 0 calc(33.33% - 12px);
+  }
+
+  /* Tighter card spacing on mobile */
+  .card__content {
+    padding: 12px 10px;
+  }
+
+  /* Footer stacks on mobile */
+  .footer__content-top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 989px) {
+  .header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+/* ==========================================================================
+   25. UTILITY CLASSES
+   ========================================================================== */
+.vgi-text-orange { color: var(--vgi-orange); }
+.vgi-text-green { color: var(--vgi-green); }
+.vgi-bg-warm { background-color: var(--vgi-warm-gray); }
+.vgi-bg-charcoal { background-color: var(--vgi-charcoal); color: var(--vgi-white); }
+.vgi-bg-green { background-color: var(--vgi-green); color: var(--vgi-white); }
+
+.vgi-uppercase {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vgi-divider {
+  width: 48px;
+  height: 3px;
+  background-color: var(--vgi-orange);
+  margin: 16px auto;
+}
+
+/*
+   ==========================================================================
+   INTERSECTION OBSERVER REFERENCE (add via theme.liquid or a .js asset)
+   ==========================================================================
+   const observer = new IntersectionObserver((entries) => {
+     entries.forEach(entry => {
+       if (entry.isIntersecting) {
+         entry.target.classList.add('is-visible');
+         observer.unobserve(entry.target);
+       }
+     });
+   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+   document.querySelectorAll('.vgi-animate').forEach(el => observer.observe(el));
+   ==========================================================================
+*/
