@@ -1,88 +1,76 @@
 /* ==========================================================================
-   VGI Prints — Dark Premium Theme Overhaul
-   Navy/Gold design system layered on top of Shopify Dawn
+   VGI Prints — Brand Theme
+   Burnt Orange + Forest Green design system on Shopify Dawn
    ========================================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
 
 /* --------------------------------------------------------------------------
    Design Tokens
    -------------------------------------------------------------------------- */
 :root {
-  --vgi-navy: #0D1B2A;
-  --vgi-navy-light: #1A2A3A;
-  --vgi-navy-border: #1E3A5F;
-  --vgi-navy-dark: #091520;
-  --vgi-gold: #C9A84C;
-  --vgi-gold-hover: #D4B85E;
-  --vgi-gold-dim: rgba(201, 168, 76, 0.15);
+  --vgi-orange: #D35400;
+  --vgi-orange-hover: #B84600;
+  --vgi-orange-dim: rgba(211, 84, 0, 0.12);
+  --vgi-green: #2D5A2D;
+  --vgi-green-light: #3A6E3A;
+  --vgi-charcoal: #1A1A1A;
   --vgi-white: #FFFFFF;
   --vgi-white-soft: rgba(255, 255, 255, 0.85);
-  --vgi-white-muted: rgba(255, 255, 255, 0.55);
+  --vgi-warm-gray: #F5F3EF;
+  --vgi-text-dark: #333333;
+  --vgi-text-body: #555555;
 
-  /* Override Dawn color tokens */
-  --color-background: 13, 27, 42;
-  --color-foreground: 255, 255, 255;
-  --color-button: 201, 168, 76;
-  --color-button-text: 13, 27, 42;
-  --color-secondary-button: 26, 42, 58;
-  --color-secondary-button-text: 255, 255, 255;
-  --color-link: 201, 168, 76;
-  --color-badge-foreground: 255, 255, 255;
-  --color-badge-background: 26, 42, 58;
-  --color-badge-border: 30, 58, 95;
-  --gradient-background: #0D1B2A;
+  /* Override Dawn color tokens — default to white/light */
+  --color-background: 255, 255, 255;
+  --color-foreground: 51, 51, 51;
+  --color-button: 211, 84, 0;
+  --color-button-text: 255, 255, 255;
+  --color-secondary-button: 255, 255, 255;
+  --color-secondary-button-text: 211, 84, 0;
+  --color-link: 211, 84, 0;
+  --gradient-background: #FFFFFF;
 
-  /* Override Dawn font tokens */
+  /* Fonts */
   --font-heading-family: 'Playfair Display', serif;
   --font-heading-style: normal;
   --font-heading-weight: 700;
-  --font-body-family: 'Inter', sans-serif;
+  --font-body-family: 'Lato', sans-serif;
   --font-body-style: normal;
   --font-body-weight: 400;
 
-  /* Zero out Dawn's rounded corners */
-  --buttons-radius: 0px;
-  --buttons-border-width: 0px;
-  --inputs-radius: 0px;
-  --variant-pills-radius: 0px;
-  --product-card-corner-radius: 0rem;
-  --product-card-image-padding: 0rem;
-  --media-radius: 0px;
-  --media-border-opacity: 0;
-  --media-shadow-opacity: 0;
-  --popup-corner-radius: 0px;
+  /* Shape — keep Dawn's clean rounded defaults, not zero */
+  --buttons-radius: 4px;
+  --inputs-radius: 4px;
 }
 
 /* --------------------------------------------------------------------------
-   Base / Body
+   Base
    -------------------------------------------------------------------------- */
-body,
-.color-scheme-1,
-.color-background-1 {
-  background-color: var(--vgi-navy) !important;
-  color: var(--vgi-white-soft);
-  font-family: 'Inter', sans-serif;
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--vgi-text-body);
+  background-color: var(--vgi-white);
 }
 
-/* All Dawn color scheme containers — force dark */
-[class*="color-"] {
-  --color-background: 13, 27, 42;
-  --color-foreground: 255, 255, 255;
-  --color-button: 201, 168, 76;
-  --color-button-text: 13, 27, 42;
-  --gradient-background: #0D1B2A;
-}
-
-/* --------------------------------------------------------------------------
-   Typography
-   -------------------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6,
 .h0, .h1, .h2, .h3, .h4, .h5 {
   font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-text-dark);
+}
+
+a:not(.button) {
+  color: var(--vgi-orange);
+}
+
+a:not(.button):hover {
+  color: var(--vgi-orange-hover);
+}
+
+::selection {
+  background-color: var(--vgi-orange);
   color: var(--vgi-white);
-  letter-spacing: -0.01em;
 }
 
 /* --------------------------------------------------------------------------
@@ -90,8 +78,7 @@ h1, h2, h3, h4, h5, h6,
    -------------------------------------------------------------------------- */
 .header-wrapper,
 .section-header {
-  background-color: var(--vgi-navy) !important;
-  border-bottom: 1px solid var(--vgi-navy-border) !important;
+  background-color: var(--vgi-charcoal) !important;
 }
 
 .header,
@@ -100,60 +87,52 @@ h1, h2, h3, h4, h5, h6,
   color: var(--vgi-white) !important;
 }
 
-/* Nav links */
 .header__menu-item,
 .header__menu-item span,
-.list-menu__item--link,
-.mega-menu__link {
-  color: var(--vgi-white-soft) !important;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+.list-menu__item--link {
+  color: rgba(255,255,255,0.85) !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.8rem;
 }
 
-.header__menu-item:hover,
-.list-menu__item--link:hover,
-.mega-menu__link:hover {
-  color: var(--vgi-gold) !important;
+.header__menu-item:hover span,
+.list-menu__item--link:hover {
+  color: var(--vgi-orange) !important;
 }
 
 /* Cart icon */
 .header__icon .icon,
 .header__icon svg {
-  color: var(--vgi-gold) !important;
-  stroke: var(--vgi-gold) !important;
+  color: var(--vgi-white) !important;
+  stroke: var(--vgi-white) !important;
 }
 
-.header__icon:hover .icon,
-.header__icon:hover svg {
-  color: var(--vgi-gold-hover) !important;
-  stroke: var(--vgi-gold-hover) !important;
-}
-
-/* Cart count badge */
 .cart-count-bubble {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
 }
 
 /* Announcement bar */
 .announcement-bar {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
 }
 
 .announcement-bar a,
 .announcement-bar__link {
-  color: var(--vgi-navy) !important;
+  color: var(--vgi-white) !important;
 }
 
-/* Menu drawer (mobile) */
-.menu-drawer,
+/* Mobile menu drawer */
+.menu-drawer {
+  background-color: var(--vgi-charcoal) !important;
+}
+
 .menu-drawer__menu-item,
-.menu-drawer__navigation {
-  background-color: var(--vgi-navy-light) !important;
+.menu-drawer__navigation a {
   color: var(--vgi-white) !important;
 }
 
@@ -161,230 +140,88 @@ h1, h2, h3, h4, h5, h6,
    Buttons
    -------------------------------------------------------------------------- */
 .button,
-.shopify-challenge__button,
 button.button,
 a.button {
-  border-radius: 0 !important;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 0.82rem;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Primary / solid buttons */
 .button--primary,
-.button--primary:not([disabled]),
-.shopify-payment-button .shopify-payment-button__button--unbranded {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
+.button--primary:not([disabled]) {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
   border: none !important;
 }
 
-.button--primary:hover,
-.shopify-payment-button .shopify-payment-button__button--unbranded:hover {
-  background-color: var(--vgi-gold-hover) !important;
-  color: var(--vgi-navy) !important;
+.button--primary:hover {
+  background-color: var(--vgi-orange-hover) !important;
 }
 
-/* Secondary / outline buttons */
 .button--secondary {
   background-color: transparent !important;
-  color: var(--vgi-white) !important;
-  border: 1px solid var(--vgi-navy-border) !important;
-  border-radius: 0 !important;
+  color: var(--vgi-orange) !important;
+  border: 2px solid var(--vgi-orange) !important;
 }
 
 .button--secondary:hover {
-  background-color: var(--vgi-navy-light) !important;
-  border-color: var(--vgi-gold) !important;
-  color: var(--vgi-gold) !important;
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
 }
 
-/* Tertiary / text buttons */
-.button--tertiary {
-  color: var(--vgi-gold) !important;
+.quick-add__submit {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
+  border: none !important;
 }
 
-.button--tertiary:hover {
-  color: var(--vgi-gold-hover) !important;
+.quick-add__submit:hover {
+  background-color: var(--vgi-orange-hover) !important;
+}
+
+/* Shopify Pay button */
+.shopify-payment-button .shopify-payment-button__button--unbranded {
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
 }
 
 /* --------------------------------------------------------------------------
    Product Cards
    -------------------------------------------------------------------------- */
-.card-wrapper,
-.card,
 .card--standard,
 .card--card {
-  background-color: var(--vgi-navy-light) !important;
-  border: 1px solid var(--vgi-navy-border) !important;
-  border-radius: 0 !important;
-  overflow: hidden;
-}
-
-.card__content,
-.card__information {
-  background-color: var(--vgi-navy-light) !important;
-  padding: 1rem !important;
+  border-radius: 4px !important;
 }
 
 .card__heading,
-.card__heading a,
-.card-information__text,
-.card__text {
-  color: var(--vgi-white) !important;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+.card__heading a {
+  font-family: 'Lato', sans-serif !important;
+  color: var(--vgi-text-dark) !important;
+  font-weight: 700;
 }
 
 .card__heading a:hover {
-  color: var(--vgi-gold) !important;
+  color: var(--vgi-orange) !important;
 }
 
-/* Price */
 .price-item,
 .price-item--regular,
-.price-item--sale,
-.price .money {
-  color: var(--vgi-gold) !important;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
+.price-item--sale {
+  color: var(--vgi-orange) !important;
+  font-weight: 700;
 }
 
-/* Card media */
-.card__media,
-.card .media {
-  border-radius: 0 !important;
-  overflow: hidden;
-}
-
-.card__inner {
-  border-radius: 0 !important;
-  border: none !important;
-}
-
-/* Quick add button on cards */
-.quick-add__submit {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
-  border-radius: 0 !important;
-  border: none !important;
-}
-
-.quick-add__submit:hover {
-  background-color: var(--vgi-gold-hover) !important;
-}
-
-/* Card badge (sale, sold out, etc.) */
 .card__badge .badge {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
-  border-radius: 0 !important;
+  background-color: var(--vgi-orange) !important;
+  color: var(--vgi-white) !important;
   border: none !important;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* --------------------------------------------------------------------------
-   Collection Page
-   -------------------------------------------------------------------------- */
-.collection-hero,
-.collection-hero__inner {
-  background-color: var(--vgi-navy) !important;
-}
-
-.collection-hero__title {
-  font-family: 'Playfair Display', serif !important;
-  color: var(--vgi-white) !important;
-}
-
-.collection-hero__description {
-  color: var(--vgi-white-soft) !important;
-}
-
-/* Facets / Filters */
-.facets-wrapper,
-.facets__form {
-  border-color: var(--vgi-navy-border) !important;
-}
-
-.facets__label,
-.facets__summary,
-.facets__heading,
-.facet-filters__label {
-  color: var(--vgi-white-soft) !important;
-}
-
-.active-facets__button {
-  background-color: var(--vgi-navy-light) !important;
-  color: var(--vgi-white) !important;
-  border-color: var(--vgi-navy-border) !important;
-  border-radius: 0 !important;
-}
-
-/* --------------------------------------------------------------------------
-   Product Page
-   -------------------------------------------------------------------------- */
-.product__title {
-  font-family: 'Playfair Display', serif !important;
-  color: var(--vgi-white) !important;
-}
-
-.product__description,
-.product__text {
-  color: var(--vgi-white-soft) !important;
-}
-
-/* Variant picker */
-.product-form__input label {
-  color: var(--vgi-white-soft) !important;
-}
-
-fieldset.product-form__input .swatch-input__button,
-.variant-input .swatch-input__button {
-  border-radius: 0 !important;
-}
-
-/* Quantity selector */
-.quantity {
-  border-color: var(--vgi-navy-border) !important;
-  border-radius: 0 !important;
-  color: var(--vgi-white) !important;
-}
-
-.quantity__input {
-  color: var(--vgi-white) !important;
-  background-color: transparent !important;
-}
-
-.quantity__button {
-  color: var(--vgi-white-soft) !important;
-}
-
-/* --------------------------------------------------------------------------
-   Cart Drawer / Cart Page
-   -------------------------------------------------------------------------- */
-.drawer,
-.cart-drawer {
-  background-color: var(--vgi-navy-light) !important;
-  color: var(--vgi-white) !important;
-}
-
-.cart-drawer__overlay {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.cart-item__name,
-.cart-item__details a {
-  color: var(--vgi-white) !important;
-}
-
-.cart-item__price .money {
-  color: var(--vgi-gold) !important;
+  letter-spacing: 0.04em;
 }
 
 /* --------------------------------------------------------------------------
@@ -393,8 +230,8 @@ fieldset.product-form__input .swatch-input__button,
 .footer,
 .section-footer,
 footer {
-  background-color: var(--vgi-navy-dark) !important;
-  border-top: 1px solid var(--vgi-navy-border) !important;
+  background-color: var(--vgi-green) !important;
+  color: var(--vgi-white) !important;
 }
 
 .footer-block__heading,
@@ -406,35 +243,25 @@ footer {
 .footer-block a,
 .footer a,
 .copyright__content a {
-  color: var(--vgi-white-muted) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .footer-block a:hover,
 .footer a:hover {
-  color: var(--vgi-gold) !important;
+  color: var(--vgi-orange) !important;
 }
 
 .footer-block__details-content,
 .footer p,
 .copyright__content {
-  color: var(--vgi-white-muted) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
-/* Newsletter input in footer */
 .footer .field__input {
-  background-color: var(--vgi-navy-light) !important;
-  border: 1px solid var(--vgi-navy-border) !important;
+  background-color: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
   color: var(--vgi-white) !important;
-  border-radius: 0 !important;
-}
-
-.footer .field__button {
-  color: var(--vgi-gold) !important;
-}
-
-/* Payment icons */
-.footer .list-payment .icon {
-  opacity: 0.6;
+  border-radius: 4px !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -442,136 +269,109 @@ footer {
    -------------------------------------------------------------------------- */
 .field__input,
 .select__select,
-.customer input,
 textarea {
-  background-color: var(--vgi-navy-light) !important;
-  border: 1px solid var(--vgi-navy-border) !important;
-  color: var(--vgi-white) !important;
-  border-radius: 0 !important;
+  border-color: #cccccc !important;
+  border-radius: 4px !important;
+  color: var(--vgi-text-dark) !important;
 }
 
 .field__label {
-  color: var(--vgi-white-muted) !important;
+  color: var(--vgi-text-body) !important;
 }
 
 /* --------------------------------------------------------------------------
-   Sections — Image Banner / Hero
+   Cart Drawer
    -------------------------------------------------------------------------- */
-.banner {
-  border-radius: 0 !important;
+.drawer {
+  background-color: var(--vgi-white) !important;
 }
 
-.banner__content {
-  background-color: rgba(13, 27, 42, 0.75);
+.cart-item__name a {
+  color: var(--vgi-text-dark) !important;
+}
+
+.cart-item__price .money {
+  color: var(--vgi-orange) !important;
+  font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
-   Rich Text Section
+   Collection / Facets
    -------------------------------------------------------------------------- */
-.rich-text-wrapper {
-  background-color: var(--vgi-navy) !important;
-}
-
-/* --------------------------------------------------------------------------
-   Slideshow
-   -------------------------------------------------------------------------- */
-.slideshow {
-  border-radius: 0 !important;
-}
-
-/* --------------------------------------------------------------------------
-   Misc Dawn Overrides — kill generic borders and outlines
-   -------------------------------------------------------------------------- */
-.section-template--*,
-.content-container,
-.isolate {
-  background-color: var(--vgi-navy) !important;
-}
-
-/* Remove Dawn's default shadow/border styling on media */
-.global-media-settings {
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Breadcrumbs */
-.breadcrumbs a,
-.breadcrumbs span {
-  color: var(--vgi-white-muted) !important;
-}
-
-.breadcrumbs a:hover {
-  color: var(--vgi-gold) !important;
-}
-
-/* Links */
-a:not(.button) {
-  color: var(--vgi-gold);
-}
-
-a:not(.button):hover {
-  color: var(--vgi-gold-hover);
-}
-
-/* Selection */
-::selection {
-  background-color: var(--vgi-gold);
-  color: var(--vgi-navy);
-}
-
-/* Scrollbar (Webkit) */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--vgi-navy);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--vgi-navy-border);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--vgi-gold);
-}
-
-/* Search */
-.predictive-search,
-.predictive-search__results-groups-wrapper {
-  background-color: var(--vgi-navy-light) !important;
-  border-color: var(--vgi-navy-border) !important;
+.collection-hero__title {
+  font-family: 'Playfair Display', serif !important;
   color: var(--vgi-white) !important;
 }
 
-.predictive-search__heading {
-  color: var(--vgi-white-muted) !important;
+.facets__label,
+.facets__heading {
+  color: var(--vgi-text-dark) !important;
 }
 
-.predictive-search-result__title a {
+.active-facets__button {
+  background-color: var(--vgi-warm-gray) !important;
+  color: var(--vgi-text-dark) !important;
+  border-radius: 4px !important;
+}
+
+/* --------------------------------------------------------------------------
+   Product Page
+   -------------------------------------------------------------------------- */
+.product__title {
+  font-family: 'Playfair Display', serif !important;
+  color: var(--vgi-text-dark) !important;
+}
+
+.product__description,
+.product__text {
+  color: var(--vgi-text-body) !important;
+}
+
+.quantity {
+  border-color: #cccccc !important;
+  border-radius: 4px !important;
+}
+
+/* --------------------------------------------------------------------------
+   Sections — dark charcoal override (for product carousel and dark sections)
+   -------------------------------------------------------------------------- */
+.color-scheme-3,
+.color-background-3 {
+  background-color: var(--vgi-charcoal) !important;
   color: var(--vgi-white) !important;
 }
 
-/* Modal / Popup */
-.modal__content,
-.popup-modal__content {
-  background-color: var(--vgi-navy-light) !important;
+.color-scheme-3 h1,
+.color-scheme-3 h2,
+.color-scheme-3 h3,
+.color-background-3 h1,
+.color-background-3 h2,
+.color-background-3 h3 {
   color: var(--vgi-white) !important;
-  border-radius: 0 !important;
 }
 
 /* --------------------------------------------------------------------------
    Pagination
    -------------------------------------------------------------------------- */
-.pagination__list .pagination__item a {
+.pagination__item--current a,
+.pagination__item--current span {
+  background-color: var(--vgi-orange) !important;
   color: var(--vgi-white) !important;
-  border-color: var(--vgi-navy-border) !important;
-  border-radius: 0 !important;
+  border-color: var(--vgi-orange) !important;
 }
 
-.pagination__list .pagination__item--current {
-  background-color: var(--vgi-gold) !important;
-  color: var(--vgi-navy) !important;
-  border-radius: 0 !important;
+/* --------------------------------------------------------------------------
+   Misc
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vgi-orange);
 }
